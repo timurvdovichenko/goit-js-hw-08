@@ -54,11 +54,15 @@ function onSavedDataForm() {
 
 //function of tasks after submiting form
 function onFormSubmit(evt) {
-  evt.preventDefault();
-  showObjectSubmitForm();
-  evt.currentTarget.reset();
-  localStorage.removeItem(STORAGE_KEY);
-  formData = {};
+  if (formData.email === undefined || formData.message === undefined) {
+    alert('Будь ласка заповніть всі поля реєстрації!');
+  } else {
+    evt.preventDefault();
+    showObjectSubmitForm();
+    evt.currentTarget.reset();
+    localStorage.removeItem(STORAGE_KEY);
+    formData = {};
+  }
 }
 
 // function to show log at console
